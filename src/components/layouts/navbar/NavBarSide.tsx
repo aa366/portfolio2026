@@ -1,54 +1,17 @@
-"use client";
-
-import Image from "next/image";
-import Link from "next/link";
-import { NAVBAR } from "@/constants/layout";
-import { Menu, X, Settings } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import {
   Drawer,
-  DrawerClose,
+  DrawerTrigger,
   DrawerContent,
   DrawerHeader,
   DrawerTitle,
-  DrawerTrigger,
-} from "../ui/drawer";
-import { Button } from "../ui/button";
-import {
-  Dialog,
-  DialogClose,
-  DialogContent,
-  DialogTitle,
-  DialogTrigger,
-} from "../ui/dialog";
+  DrawerClose,
+} from "@/components/ui/drawer";
+import { NAVBAR } from "@/constants/layout";
+import { Menu, X } from "lucide-react";
+import Image from "next/image";
 
-interface Props {
-  Name?: string;
-}
-
-export default function Navbar({}: Props) {
-  const { navLinks, socialLinks } = NAVBAR;
-
-  return (
-    <header
-      className={` sticky top-0 rounded-b-lg z-50 transition-all duration-300 bg-red-900 backdrop-blur-md py-3  `}
-    >
-      <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
-        <Link
-          href="/"
-          className="text-xl md:text-3xl font-bold bg-linear-to-r from-purple-500 to-blue-500 bg-clip-text text-transparent"
-        >
-          Abdelwahab
-        </Link>
-        <div>
-          <NavBarSettings />
-          <NavBarSide />
-        </div>
-      </div>
-    </header>
-  );
-}
-
-function NavBarSide() {
+export default function NavBarSide() {
   const { navLinks, socialLinks } = NAVBAR;
 
   return (
@@ -100,24 +63,5 @@ function NavBarSide() {
         </nav>
       </DrawerContent>
     </Drawer>
-  );
-}
-
-function NavBarSettings() {
-  return (
-    <>
-      <Dialog>
-        <DialogTrigger asChild>
-          <Button>
-            <Settings className="size-6" />
-          </Button>
-        </DialogTrigger>
-        <DialogContent>
-          <DialogTitle>Settings</DialogTitle>
-
-          <div>sdas</div>
-        </DialogContent>
-      </Dialog>
-    </>
   );
 }

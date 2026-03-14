@@ -4,11 +4,14 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import AiChatbot from "@/components/AiChatbot";
 import Footer from "@/components/Footer";
-import NavBar from "@/components/layouts/NavBar";
-import { ThemeProvider } from "@/lib/Providers/theme-provider";
+import NavBar from "@/components/layouts/navbar/NavBar";
+import { ThemeProvider as NextThemesProvider } from "@/components/Providers/theme-provider";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale } from "next-intl/server";
+import TestComponent from "@/components/layouts/test";
 
+// consts
+import { ThemeNames } from "@/constants/colors";
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
 const geistSans = Geist({
@@ -33,6 +36,7 @@ export default async function RootLayout({
 }>) {
   const locale = await getLocale();
   const dir = ["ar"].includes(locale) ? "rtl" : "ltr";
+
   return (
     <html
       lang={locale}
@@ -41,21 +45,25 @@ export default async function RootLayout({
       suppressHydrationWarning
     >
       <body
+        suppressHydrationWarning
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <ThemeProvider
-          attribute={"class"}
+        <NextThemesProvider
           defaultTheme="system"
           enableSystem
-          enableColorScheme
+          attribute="class"
+          disableTransitionOnChange
+          themes={ThemeNames}
         >
           <NextIntlClientProvider>
             <NavBar />
+
+            <TestComponent />
             {children}
             <Footer />
             <AiChatbot />
           </NextIntlClientProvider>
-        </ThemeProvider>
+        </NextThemesProvider>
       </body>
     </html>
   );
