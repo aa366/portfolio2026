@@ -12,6 +12,7 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "culori": "^4.0.2",
+    "embla-carousel-react": "^8.6.0",
     "fast-average-color": "^9.5.0",
     "framer-motion": "^12.37.0",
     "lucide-react": "^0.577.0",

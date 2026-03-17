@@ -1,20 +1,3 @@
-interface ColorConfig {
-  primary: string;
-  secondary: string;
-  accent: string;
-  destructive: string;
-  [key: string]: string;
-}
-
-interface ColorPreset {
-  name: string;
-  colors: ColorConfig;
-  backgroundLight: string;
-  backgroundDark: string;
-  cardLight: string;
-  cardDark: string;
-}
-
 type SKILL = {
   name: string;
   image: string;
@@ -25,16 +8,22 @@ type SKILLGROUP = {
   skills: SKILL[];
 };
 
-type project = {
+type PROJECT = {
   name: string;
   image: string;
   techstack: string;
   category: string;
+  preview: string;
+
   links: {
-    visit: string;
+    visit?: string;
     code: string;
-    video: string;
+    video?: string;
   };
+};
+type PROJECTGROUP = {
+  category: string;
+  projects: PROJECT[];
 };
 
 type experience = {
@@ -73,14 +62,4 @@ type social = {
   name: string;
   icon: string;
   link: string;
-};
-
-type data = {
-  main: main;
-  about: about;
-  skills: skill[];
-  projects: project[];
-  experiences: experience[];
-  educations: education[];
-  socials: social[];
 };

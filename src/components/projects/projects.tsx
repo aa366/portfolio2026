@@ -5,11 +5,11 @@ import SectionWrapper from "../section-wrapper";
 import ProjectCard from "./projectCard";
 
 interface Props {
-  projectsData: project[];
+  projectsData: PROJECT[];
 }
 
 const Projects = ({ projectsData }: Props) => {
-  const [projects] = useState([...projectsData].reverse() as project[]);
+  const projects = projectsData;
 
   // const categories = ['All', ...Array.from(new Set(projects.map((s) => s.category)))]
   const categories = [...Array.from(new Set(projects.map((s) => s.category)))];
