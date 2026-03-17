@@ -1,5 +1,10 @@
 import React from "react";
-
-export default function Projects() {
-  return <div>Projects</div>;
+import { MYPROJECTS } from "@/constants/data";
+import Projects from "./projects/projects";
+export default function MyProjects() {
+  return (
+    <>
+      <Projects projectsData={MYPROJECTS} />
+    </>
+  );
 }

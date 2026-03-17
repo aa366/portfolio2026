@@ -30,7 +30,7 @@ export default function TestComponent() {
       </SelectTrigger>
       <SelectContent>
         <SelectGroup>
-          {ThemeNames.map((item, i) => (
+          {MainThemeNames.map((item, i) => (
             <SelectItem key={item + i} value={item}>
               {item}
             </SelectItem>
