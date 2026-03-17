@@ -1,42 +1,41 @@
 "use client";
-import { useEffect, useState } from "react";
+import { Activity, useEffect, useState } from "react";
 import { Link } from "react-scroll";
 import SectionWrapper from "../section-wrapper";
 import ProjectCard from "./projectCard";
-
+// data => filter => limit + distirubution
 interface Props {
-  projectsData: PROJECT[];
+  projectsData: PROJECTGROUP[];
 }
 
 const Projects = ({ projectsData }: Props) => {
-  const projects = projectsData;
-
   // const categories = ['All', ...Array.from(new Set(projects.map((s) => s.category)))]
-  const categories = [...Array.from(new Set(projects.map((s) => s.category)))];
+
+  const categories = projectsData.map((item) => item.category);
 
   // const [category, setCategory] = useState(categories[0] || "All")
   const [category, setCategory] = useState(categories[0]);
 
-  const [filteredProjects, setFilteredProjects] = useState(
-    projects as project[],
-  );
+  // const [filteredProjects, setFilteredProjects] = useState(
+  //   projects
+  // );
   const [viewAll, setViewAll] = useState(false);
 
-  const filterProjects = (cat: string) => {
-    setViewAll(false);
-    setCategory(cat);
-    // cat === "All" ? setFilteredProjects(projects) :
-    setFilteredProjects(
-      projects.filter(
-        (p: project) => p.category.toLowerCase() === cat.toLowerCase(),
-      ),
-    );
-  };
+  // const filterProjects = (cat: string) => {
+  //   setViewAll(false);
+  //   setCategory(cat);
+  //   // cat === "All" ? setFilteredProjects(projects) :
+  //   setFilteredProjects(
+  //     projects.filter(
+  //       (p: project) => p.category.toLowerCase() === cat.toLowerCase(),
+  //     ),
+  //   );
+  // };
 
   useEffect(() => {
-    filterProjects(
-      categories.includes("MERN Stack") ? "MERN Stack" : categories[0],
-    );
+    // filterProjects(
+    //   categories.includes("MERN Stack") ? "MERN Stack" : categories[0],
+    // );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -44,33 +43,57 @@ const Projects = ({ projectsData }: Props) => {
     <SectionWrapper id="projects" className="mx-4 md:mx-0 min-h-screen">
       <h2 className="text-4xl text-center">Projects</h2>
 
-      <div className="overflow-x-auto scroll-hide md:w-full max-w-screen-sm mx-auto mt-6 flex justify-between items-center gap-2 md:gap-3 bg-white dark:bg-gray-800 p-2 rounded-md">
-        {categories.map((c: string = "", i: number) => (
+      {/* catagories */}
+      <div className="overflow-x-auto scroll-hide md:w-full max-w-screen-sm mx-auto mt-6 flex justify-between items-center gap-2 md:gap-3  p-2 rounded-md">
+        {categories.map((name, i) => (
           <span
             key={i}
-            onClick={() => filterProjects(c)}
-            className={`p-1.5 md:p-2 w-full text-sm md:text-base text-center capitalize rounded-md ${category.toLowerCase() === c.toLowerCase() ? "bg-violet-600 text-white" : "hover:bg-gray-100 hover:dark:bg-grey-900"} cursor-pointer transition-all`}
+            onClick={() => console.log("ok")}
+            className={`p-1.5 md:p-2 w-full text-sm md:text-base text-center capitalize rounded-md  cursor-pointer transition-all ${
+              category.toLowerCase() === name.toLowerCase()
+                ? "bg-primary/60 "
+                : "hover:bg-primary-70 "
+            }`}
           >
-            {c}
+            {name}
           </span>
         ))}
       </div>
 
+      {/* Projects Cards */}
       <div className="md:mx-6 lg:mx-auto lg:w-5/6 2xl:w-3/4 my-4 md:my-8 mx-auto grid sm:grid-cols-2 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-10">
-        {filteredProjects
-          .slice(0, viewAll ? filteredProjects.length : 6)
-          .map((p: project, i: number) => (
+        {/* {filteredProjects
+          // .slice(0, viewAll ? filteredProjects.length : 6)
+          .map((p, i: number) => (
             <ProjectCard key={i} {...p} />
-          ))}
-      </div>
+          ))} */}
 
-      {filteredProjects.length > 6 && (
+        {projectsData.map((group, i) => (
+          <Activity
+            key={"avtivity" + i}
+            mode={
+              group.category.toLowerCase() === category.toLowerCase()
+                ? "visible"
+                : "hidden"
+            }
+          >
+            {group.items.map((project, i) => (
+              <ProjectCard
+                key={"projectcard" + project.name + i}
+                {...project}
+              />
+            ))}
+          </Activity>
+        ))}
+      </div>
+      {/* button to see all if more than 6 */}
+      {/* {filteredProjects.length > 6 && (
         <ViewAll
           scrollTo="projects"
           title={viewAll ? "Okay, I got it" : "View All"}
           handleClick={() => setViewAll(!viewAll)}
         />
-      )}
+      )} */}
     </SectionWrapper>
   );
 };

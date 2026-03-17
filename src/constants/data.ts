@@ -51,49 +51,54 @@ export const MYSKILLS: SKILLGROUP[] = [
   },
 ];
 
-export const MYPROJECTS = [
+export const MYPROJECTS: PROJECTGROUP[] = [
   {
-    name: "Personal E-commerce App",
-    image: "/PE-commerce.png",
-    techstack: "nextjs, tailwindcss,shadcn ",
-    category: "frontend",
-    links: {
-      visit: "https://al-safwa-charitable-foundation.vercel.app/",
-      code: "https://github.com/aa366/Al-Safwa-Charitable-Foundation",
-      video: "",
-    },
-  },
-  {
-    name: "Al-Safwa-Charitable-Foundation",
-    image: "/charity-safawt.png",
-    techstack: "nextjs, tailwindcss,shadcn ",
-    category: "frontend",
-    links: {
-      visit: "https://al-safwa-charitable-foundation.vercel.app/",
-      code: "https://github.com/aa366/Al-Safwa-Charitable-Foundation",
-      video: "",
-    },
-  },
-  {
-    name: "el safwat collage",
-    image: "/colleage-safwat.png",
-    techstack: "nextjs, tailwindcss,shadcn ",
-    category: "frontend",
-    links: {
-      visit: "https://el-safwat-collage.vercel.app/",
-      code: "https://github.com/aa366/el-safwat-collage",
-      video: "",
-    },
-  },
-  {
-    name: "Portfolio 2025",
-    image: "/portfolio.png",
-    techstack: "nextjs, tailwindcss,shadcn ",
-    category: "frontend",
-    links: {
-      visit: "",
-      code: "https://github.com/aa366/Portfolio-2025",
-      video: "",
-    },
+    category: "Frontend",
+    items: [
+      {
+        name: "Personal E-commerce App",
+        image: "/PE-commerce.png",
+        techstack: "nextjs, tailwindcss,shadcn ",
+        category: "frontend",
+        links: {
+          visit: "https://al-safwa-charitable-foundation.vercel.app/",
+          code: "https://github.com/aa366/Al-Safwa-Charitable-Foundation",
+          video: "",
+        },
+      },
+      {
+        name: "Al-Safwa-Charitable-Foundation",
+        image: "/charity-safawt.png",
+        techstack: "nextjs, tailwindcss,shadcn ",
+        category: "frontend",
+        links: {
+          visit: "https://al-safwa-charitable-foundation.vercel.app/",
+          code: "https://github.com/aa366/Al-Safwa-Charitable-Foundation",
+          video: "",
+        },
+      },
+      {
+        name: "el safwat collage",
+        image: "/colleage-safwat.png",
+        techstack: "nextjs, tailwindcss,shadcn ",
+        category: "frontend",
+        links: {
+          visit: "https://el-safwat-collage.vercel.app/",
+          code: "https://github.com/aa366/el-safwat-collage",
+          video: "",
+        },
+      },
+      {
+        name: "Portfolio 2025",
+        image: "/portfolio.png",
+        techstack: "nextjs, tailwindcss,shadcn ",
+        category: "frontend",
+        links: {
+          visit: "",
+          code: "https://github.com/aa366/Portfolio-2025",
+          video: "",
+        },
+      },
+    ],
   },
 ];

@@ -13,7 +13,7 @@ type PROJECT = {
   image: string;
   techstack: string;
   category: string;
-  preview: string;
+  summary?: string;
 
   links: {
     visit?: string;
@@ -23,7 +23,7 @@ type PROJECT = {
 };
 type PROJECTGROUP = {
   category: string;
-  projects: PROJECT[];
+  items: PROJECT[];
 };
 
 type experience = {
