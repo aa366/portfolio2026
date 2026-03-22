@@ -34,6 +34,15 @@ type experience = {
   desc: string[];
 };
 
+interface TIMELINEITEM {
+  timelineType: "work" | "education";
+  name: string;
+  title: string;
+  techStack: string;
+  summaryPoints: string[];
+  dateRange: string;
+}
+
 type education = {
   institute: string;
   degree: string;

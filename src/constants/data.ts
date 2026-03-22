@@ -102,3 +102,13 @@ export const MYPROJECTS: PROJECTGROUP[] = [
     ],
   },
 ];
+export const MYEXPERIENCE: TIMELINEITEM[] = [
+  {
+    timelineType: "education",
+    name: "Software Development",
+    title: " self-learning",
+    techStack: "ract , asd , sad s,  s sad , ds , s,s ad, s,as , s,s a",
+    summaryPoints: ["point1", "point2", "point3"],
+    dateRange: "2025-2026",
+  },
+];
