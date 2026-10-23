@@ -20,7 +20,7 @@ const Skills = ({ skillData }: Props) => {
   }
   return (
     <SectionWrapper id="skills" className="w-full">
-      <h2 className="text-4xl text-center">{title}</h2>
+      <h2 className="text-4xl text-center text-shadow-lg text-shadow-primary animate-glow font-extrabold">{title}</h2>
 
       {/* catagories */}
 
@@ -29,11 +29,10 @@ const Skills = ({ skillData }: Props) => {
           <span
             key={i + "CATAGORY"}
             onClick={() => setCategory(name)}
-            className={`p-1.5 md:p-2 text-sm md:text-base w-full text-center cursor-pointer rounded-md ${
-              category.toLowerCase() === name.toLowerCase()
-                ? "bg-primary/70  "
-                : ""
-            } transition-all capitalize`}
+            className={`p-1.5 md:p-2 text-sm md:text-base w-full text-center cursor-pointer rounded-md ${category.toLowerCase() === name.toLowerCase()
+              ? "bg-primary/70  "
+              : ""
+              } transition-all capitalize`}
           >
             {name}
           </span>

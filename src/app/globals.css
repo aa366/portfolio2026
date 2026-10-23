@@ -590,7 +590,7 @@
 
 @theme {
   --breakpoint-sm: 500px;
-
+  --animate-glow: glow 3s linear infinite;
   --animate-chaking: shake 1s ease-in-out infinite;
   --animate-profileimg: profileimg 2s linear infinite;
   --animate-spining: spining 10s linear infinite;
@@ -648,5 +648,10 @@
     background-position:
       350% 50%,
       350% 50%;
+  }
+}
+@keyframes glow {
+  50% {
+    text-shadow: 5px 0 5rem var(--primary);
   }
 }

@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useEffect, useState } from "react";
 import {
   VerticalTimeline,
@@ -18,8 +19,8 @@ const WorkExperience: React.FC = () => {
   return (
     <>
       <div className="timeline-container">
-        <h2 className="timeline-title">
-          📅 Work Experience & Education Timeline
+        <h2 className=" font-extrabold timeline-title text-4xl text-center text-shadow-lg text-shadow-primary animate-glow  ">
+          Work Experience & Education Timeline 📅
         </h2>
       </div>
       <VerticalTimeline>
@@ -37,11 +38,11 @@ const WorkExperience: React.FC = () => {
             contentArrowStyle={
               item.timelineType === "work"
                 ? {
-                    borderRight:
-                      index === 0
-                        ? "7px solid rgb(33, 150, 243)"
-                        : "7px solid rgb(240, 240, 240)",
-                  }
+                  borderRight:
+                    index === 0
+                      ? "7px solid rgb(33, 150, 243)"
+                      : "7px solid rgb(240, 240, 240)",
+                }
                 : { borderRight: "7px solid rgb(255, 224, 230)" }
             }
             date={item.dateRange}

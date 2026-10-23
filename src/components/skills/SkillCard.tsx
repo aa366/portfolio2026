@@ -1,55 +1,52 @@
 "use client";
 import Image from "next/image";
-import { Suspense, use, useEffect, useState } from "react";
-import { FastAverageColor } from "fast-average-color";
+import { Suspense } from "react";
 import { useTheme } from "next-themes";
 import { Skeleton } from "../ui/skeleton";
 
 const Skill = ({ name, image, tip }: SKILL) => {
   const { resolvedTheme } = useTheme();
-  const [bgColor, setBgColor] = useState("");
 
-  useEffect(() => {
-    new FastAverageColor()
-      .getColorAsync(image)
-      .then((color) => {
-        const rgba = color.rgb.split(")");
-        setBgColor(rgba[0] + ",0.07)");
-      })
-      .catch((e) => {
-        console.log(e);
-      });
-  }, [image]);
+  // useEffect(() => {
+  //   new FastAverageColor()
+  //     .getColorAsync(image)
+  //     .then((color) => {
+  //       const rgba = color.rgb.split(")");
+  //       setBgColor(rgba[0] + ",0.07)");
+  //     })
+  //     .catch((e) => {
+  //       console.log(e);
+  //     });
+  // }, [image]);
+
 
   return (
     <Suspense fallback={<Loading />}>
       <div className="flex flex-col justify-center items-center gap-2 ">
         <div
           title={name}
-          style={{ backgroundColor: bgColor }}
           className={
-            "h-20 w-20 md:h-24 md:w-24 rounded-full bg-gray-800 dark:bg-gray-100 flex items-center justify-center"
+            "h-20 w-20 md:h-24 md:w-24 rounded-full bg-primary/50  flex items-center justify-center"
           }
         >
           <Image
             alt="skill"
             width={100}
             height={100}
-            className={`h-12 w-12 md:h-14 md:w-14 object-contain ${
-              resolvedTheme === "dark" &&
+            className={`h-12 w-12 md:h-14 md:w-14 object-contain shado2xl shadow-primary-foreground ${resolvedTheme === "dark" &&
               (name === "GitHub" ||
-              name === "Vercel" ||
-              name === "NextJS" ||
-              name === "Shadcn" ||
-              name === "Axios" ||
-              name === "ExpressJS"
+                name === "Vercel" ||
+                name === "NextJS" ||
+                name === "Shadcn" ||
+                name === "Axios" ||
+                name === "ExpressJS"
                 ? "invert"
                 : "invert-0")
-            }`}
+              }`}
             src={image}
           />
         </div>
-        <p className="text-sm md:text-base">{name}</p>
+        <p className="text-sm text-primary text-shadow-2xs text-shadow-primary-foreground md:text-base">{name}</p>
       </div>
     </Suspense>
   );

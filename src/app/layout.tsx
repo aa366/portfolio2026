@@ -4,7 +4,7 @@ import { Geist, Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import AiChatbot from "@/components/AiChatbot";
-import Footer from "@/components/Footer";
+import Footer from "@/components/layouts/Footer";
 import NavBar from "@/components/layouts/navbar/NavBar";
 import { ThemeProvider as NextThemesProvider } from "@/components/Providers/theme-provider";
 import { NextIntlClientProvider } from "next-intl";

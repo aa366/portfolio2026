@@ -23,8 +23,15 @@ export default function NavBarSettings() {
           aria-describedby={"dialog-Settings"}>
           <DialogTitle>Settings</DialogTitle>
 
-          <ModeToggle />
-          <SelectTheme />
+          <div className="flex justify-between items-center">
+            <label htmlFor="BrightnessPicker">Mode</label>
+            <ModeToggle />
+          </div>
+          <div className="flex justify-between items-center" >
+            <label htmlFor="MainColorPicker">Main Color</label>
+            <SelectTheme />
+          </div>
+
 
         </DialogContent>
       </Dialog>

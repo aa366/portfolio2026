@@ -41,7 +41,7 @@ const Projects = ({ projectsData }: Props) => {
 
   return (
     <SectionWrapper id="projects" className="mx-4 md:mx-0 min-h-screen">
-      <h2 className="text-4xl text-center">Projects</h2>
+      <h2 className="text-4xl text-center text-shadow-lg text-shadow-primary animate-glow font-extrabold">Projects</h2>
 
       {/* catagories */}
       <div className="overflow-x-auto scroll-hide md:w-full max-w-screen-sm mx-auto mt-6 flex justify-between items-center gap-2 md:gap-3  p-2 rounded-md">
@@ -49,11 +49,10 @@ const Projects = ({ projectsData }: Props) => {
           <span
             key={i}
             onClick={() => console.log("ok")}
-            className={`p-1.5 md:p-2 w-full text-sm md:text-base text-center capitalize rounded-md  cursor-pointer transition-all ${
-              category.toLowerCase() === name.toLowerCase()
-                ? "bg-primary/60 "
-                : "hover:bg-primary-70 "
-            }`}
+            className={`p-1.5 md:p-2 w-full text-sm md:text-base text-center capitalize rounded-md  cursor-pointer transition-all ${category.toLowerCase() === name.toLowerCase()
+              ? "bg-primary/60 "
+              : "hover:bg-primary-70 "
+              }`}
           >
             {name}
           </span>

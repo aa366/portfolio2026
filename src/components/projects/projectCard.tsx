@@ -33,8 +33,9 @@ const Project = ({ name, image, category, techstack, links }: project) => {
       variants={cardVariants}
       initial="hidden"
       animate={inView ? "visible" : "hidden"}
-      className="flex flex-col gap-2 bg-white dark:bg-gray-800 rounded-lg p-4"
+      className="flex flex-col relative gap-2 bg-primary/50 rounded-lg p-4"
     >
+      <div className="w-full h-full overflow-hidden absolute bg-primary-foreground -z-40 top-0 right-0 " />
       <div
         className="relative group rounded-lg bg-violet-50"
         onClick={() => setActive(!active)}
@@ -49,11 +50,9 @@ const Project = ({ name, image, category, techstack, links }: project) => {
 
         {(links.visit.trim() || links.code.trim() || links.video.trim()) && (
           <div
-            className={`absolute top-0 scale-x-0 ${
-              active && "scale-100"
-            } group-hover:scale-100 ${
-              active && "scale-x-100"
-            } transition-transform origin-left duration-200 ease-linear bg-gray-800 bg-opacity-60 w-full h-full rounded-lg flex items-center gap-4 justify-center`}
+            className={`absolute top-0 scale-x-0 ${active && "scale-100"
+              } group-hover:scale-100 ${active && "scale-x-100"
+              } transition-transform origin-left duration-200 ease-linear bg-gray-800 bg-opacity-60 w-full h-full rounded-lg flex items-center gap-4 justify-center`}
             onClick={() => setActive(!active)}
           >
             {links.visit.trim() && (

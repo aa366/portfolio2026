@@ -57,7 +57,8 @@ export default function SelectTheme() {
             onValueChange={handleChange}
             defaultValue={themeColor} >
             <SelectTrigger
-                className="w-45"
+                className="bg-primary/50"
+                id="MainColorPicker"
             >
                 <SelectValue />
 
