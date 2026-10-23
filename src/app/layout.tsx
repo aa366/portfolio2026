@@ -13,6 +13,7 @@ import TestComponent from "@/components/layouts/test";
 
 // consts
 import { ThemeNames } from "@/constants/colors";
+import BG from "@/components/layouts/BG";
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
 const geistSans = Geist({
@@ -35,6 +36,7 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
   const locale = await getLocale();
   const dir = ["ar"].includes(locale) ? "rtl" : "ltr";
 
@@ -49,6 +51,7 @@ export default async function RootLayout({
         suppressHydrationWarning
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <BG />
         <NextThemesProvider
           defaultTheme="system"
           enableSystem
@@ -59,7 +62,7 @@ export default async function RootLayout({
           <NextIntlClientProvider>
             <NavBar />
 
-            <TestComponent />
+
             {children}
             <Footer />
             <AiChatbot />

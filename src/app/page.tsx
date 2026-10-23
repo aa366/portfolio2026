@@ -7,7 +7,7 @@ import Contact from "@/components/Contact";
 
 export default function Home() {
   return (
-    <main>
+    <main className="flex flex-col gap-10">
       <Hero />
       <Skills />
       <Projects />

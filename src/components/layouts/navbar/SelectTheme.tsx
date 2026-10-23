@@ -11,8 +11,11 @@ import { useTheme } from "next-themes";
 import { MainThemeNames, ThemeNames } from "@/constants/colors";
 import { useEffect, useState } from "react";
 import validateTheme from "@/lib/validateTheme";
+import { useThemeStore } from "@/store/mytheme";
 
 export default function SelectTheme() {
+    const store = useThemeStore()
+
     const [themeColor, setThemeColor] = useState(localStorage.getItem("themecolor") || "default")
     const { setTheme } = useTheme()
     // const s = useTheme();
@@ -25,19 +28,26 @@ export default function SelectTheme() {
             localStorage.setItem("themecolor", v);
             setThemeColor(v);
         }
-        setTheme(validateTheme())
+        const newTheme = validateTheme()
+        store.changeStore({ theme: newTheme })
+        setTheme(newTheme)
     }
 
     useEffect(() => {
         const s = () => {
             const currentMode = localStorage.getItem("themecolor")
+            let checkedColor = ""
             if (currentMode) {
                 setThemeColor(currentMode)
+                checkedColor = currentMode
             } else {
                 // localStorage.setItem("themecolor", "default")
                 setThemeColor("default")
+                checkedColor = "default"
             }
-            setTheme(validateTheme())
+            const newTheme = validateTheme()
+            store.changeStore({ theme: newTheme, themeColor: checkedColor })
+            setTheme(newTheme)
         }
         s()
     }, [])
