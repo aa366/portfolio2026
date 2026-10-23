@@ -18,7 +18,7 @@ export default function Navbar({}: Props) {
         >
           Abdelwahab
         </Link>
-        <div>
+        <div className=" flex justify-center items-center gap-4">
           <NavBarSettings />
           <NavBarSide />
         </div>

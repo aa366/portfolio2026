@@ -13,11 +13,11 @@ export default function NavBarSettings() {
     <>
       <Dialog>
         <DialogTrigger asChild>
-          <Button>
+          <Button className=" ">
             <Settings className="size-6" />
-          </Button>
+          </Button> 
         </DialogTrigger>
-        <DialogContent>
+        <DialogContent className=" bg-primary-foreground">
           <DialogTitle>Settings</DialogTitle>
 
           <ModeToggle />

@@ -20,7 +20,7 @@ export async function POST(req: Request) {
     await transport.sendMail({
       from: email,
       to: process.env.MY_EMAIL,
-      subject: `message from portfolio-2025`,
+      subject: `message from portfolio-2026`,
 
       headers: { "X-Entity-Ref-ID": "newmail" },
       html: `
@@ -35,8 +35,9 @@ export async function POST(req: Request) {
       { status: 200 },
     );
   } catch (error) {
+    console.error(error);
     return NextResponse.json(
-      { message: `Email Sent Successfully ${error}` },
+      { message: `Failed to Sent Email` },
       { status: 500 },
     );
   }
