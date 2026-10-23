@@ -1,9 +1,4 @@
 "use client";
-
-import * as React from "react";
-import { Moon, Sun } from "lucide-react";
-import { useTheme } from "next-themes";
-
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -11,29 +6,66 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import validateTheme from "@/lib/validateTheme";
+import { useTheme } from "next-themes";
+import { useState, useEffect } from "react";
 
+type BrightnessMode = "light" | "dark" | "system" | null;
+const brightnessOptions = ["light", "dark", "system"] as const;
 export function ModeToggle() {
-  const { setTheme } = useTheme();
+  const { setTheme, systemTheme } = useTheme()
+  const [brightness, setBrightness] = useState<BrightnessMode>("light");
+  const [isOpen, setIsOpen] = useState(false)
+
+  function handleChange(e: React.MouseEvent<HTMLDivElement, MouseEvent>, mode: BrightnessMode) {
+    e.preventDefault()
+    if (mode) {
+      localStorage.setItem("brightness", mode);
+      setBrightness(mode);
+    }
+    setIsOpen(false)
+    setTheme(validateTheme())
+  }
+
+  useEffect(() => {
+    const s = () => {
+      const currentMode = localStorage.getItem("brightness")
+      localStorage.setItem("systemTheme", systemTheme ?? "dark")
+      if (
+        currentMode === "light" ||
+        currentMode === "dark" ||
+        currentMode === "system"
+      ) {
+        setBrightness(currentMode)
+      } else {
+        // localStorage.setItem("brightness", "system")
+        setBrightness("system")
+      }
+      setTheme(validateTheme())
+
+    }
+    s()
+  }, [])
 
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button variant="outline" size="icon">
-          <Sun className="h-[1.2rem] w-[1.2rem] scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90" />
-          <Moon className="absolute h-[1.2rem] w-[1.2rem] scale-0 rotate-90 transition-all dark:scale-100 dark:rotate-0" />
-          <span className="sr-only">Toggle theme</span>
+    <DropdownMenu open={isOpen}>
+      <DropdownMenuTrigger
+        asChild
+        onClick={() => setIsOpen(true)}>
+        <Button variant="outline" className=" ">
+          {brightness}
         </Button>
       </DropdownMenuTrigger>
+
       <DropdownMenuContent align="end">
-        <DropdownMenuItem onClick={() => setTheme("light")}>
-          Light
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("dark")}>
-          Dark
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("system")}>
-          System
-        </DropdownMenuItem>
+
+        {brightnessOptions.map((opt) => (
+          <DropdownMenuItem
+            key={opt + "-Brightness"}
+            onClick={(e) => handleChange(e, opt)}>
+            {opt}
+          </DropdownMenuItem>
+        ))}
       </DropdownMenuContent>
     </DropdownMenu>
   );

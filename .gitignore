@@ -10,7 +10,9 @@
 !.yarn/releases
 !.yarn/versions
 
-Portfolio-2025
+/Portfolio-2025
+/structure.md
+
 testing
 # testing
 /coverage

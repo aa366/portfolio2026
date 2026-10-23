@@ -186,6 +186,7 @@ export const SHADCN_PRESETS: ColorPreset[] = [
 ];
 
 export const MainThemeNames = [
+  "default",
   "zinc",
   "red",
   "orange",

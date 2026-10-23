@@ -8,6 +8,7 @@ import {
 
 import { Settings } from "lucide-react";
 import { ModeToggle } from "./trigger";
+import SelectTheme from "./SelectTheme";
 export default function NavBarSettings() {
   return (
     <>
@@ -15,14 +16,16 @@ export default function NavBarSettings() {
         <DialogTrigger asChild>
           <Button className=" ">
             <Settings className="size-6" />
-          </Button> 
+          </Button>
         </DialogTrigger>
-        <DialogContent className=" bg-primary-foreground">
+        <DialogContent
+          className=" bg-primary-foreground"
+          aria-describedby={"dialog-Settings"}>
           <DialogTitle>Settings</DialogTitle>
 
           <ModeToggle />
+          <SelectTheme />
 
-          <div>sdas</div>
         </DialogContent>
       </Dialog>
     </>
